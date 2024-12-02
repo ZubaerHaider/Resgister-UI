@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:login_ui/Screens/Widgets/field_design.dart';
+
 
 class AuthView extends StatelessWidget {
    AuthView({super.key});
-  final emailController = TextEditingController();
+   final nameController = TextEditingController();
+   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+   final confpasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class AuthView extends StatelessWidget {
           
           
                   TextField(
+                    controller: nameController,
                   decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                   filled: true,
@@ -38,7 +41,7 @@ class AuthView extends StatelessWidget {
                     ),
                   ),
                     hintText: 'Full Name',
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                       color: Colors.black
 
                     ),
@@ -62,7 +65,7 @@ class AuthView extends StatelessWidget {
                     ),
                   ),
                   hintText: 'Email',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                       color: Colors.black
 
                   ),
@@ -95,7 +98,7 @@ class AuthView extends StatelessWidget {
           
                   ),
                   hintText: 'Password',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                       color: Colors.black
 
                   ),
@@ -103,12 +106,13 @@ class AuthView extends StatelessWidget {
               ),
               const SizedBox(height: 20,),
               TextField(
+                controller: confpasswordController,
 
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                   filled: true,
                   fillColor: Colors.white,
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                     color: Colors.black
                   ),
           
@@ -130,7 +134,7 @@ class AuthView extends StatelessWidget {
           
                   ),
                   hintText: 'Confirm Password',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                       color: Colors.black
 
                   ),
@@ -140,9 +144,16 @@ class AuthView extends StatelessWidget {
               ElevatedButton(
 
                   onPressed: () {
-                    print(emailController.text +
+                    print(
+                        nameController.text +
                         " ---> " +
-                        passwordController.text);
+                        emailController.text+
+                        " ---> " +
+                        passwordController.text+
+                        " ---> "+
+                        confpasswordController.text
+
+                    );
                   },
                   child: const Text("Done")
               ),
